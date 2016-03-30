@@ -69,7 +69,10 @@ else
     if [ -e "$BUILD_DIR/conda_requirements.txt" ]; then
         echo "-----> Installing conda packages from conda_requirements.txt..."
         #$CONDA_BIN/conda install --file "$BUILD_DIR/conda_requirements.txt" --yes
-	cat "$BUILD_DIR/conda_requirements.txt" | xargs -I{} -d"\n" $CONDA_BIN/conda install {} --yes
+        while read line
+          do
+            $CONDA_BIN/conda install "$line"
+          done < "$BUILD_DIR/conda_requirements.txt"
     fi
     if [ -e "$BUILD_DIR/requirements.txt" ]; then
         echo "-----> Installing pip packages from requirements.txt..."

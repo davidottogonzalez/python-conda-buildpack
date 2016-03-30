@@ -61,17 +61,7 @@ $CONDA_BIN/conda install --yes --quiet pip
 # Default Conda env is root
 CONDA_ENV="root"
 
-# First add any new channels
-if [ -e "$BUILD_DIR/conda_channels.txt" ]; then
-    echo "-----> Adding new channels to config from conda_channels.txt..."
-    while read line
-      do
-        $CONDA_BIN/conda config --add channels "$line"
-      done < "$BUILD_DIR/conda_channels.txt"
-      $CONDA_BIN/conda config --get channels
-fi
-
-# Second, check if environment.yml exists and if so use with conda-env
+# First check if environment.yml exists and if so use with conda-env
 if [ -e "$BUILD_DIR/environment.yml" ]; then
     echo "-----> Installing conda environment from environment.yml..."
     $CONDA_BIN/conda env update -n root -f "$BUILD_DIR/environment.yml"
@@ -81,12 +71,13 @@ else
         echo "-----> Installing conda packages from conda_requirements.txt..."
         $CONDA_BIN/conda install --file "$BUILD_DIR/conda_requirements.txt" --yes
     fi
-
+fi
+# Second check if requirements.txt exists and if so install any other dependencies
     if [ -e "$BUILD_DIR/requirements.txt" ]; then
         echo "-----> Installing pip packages from requirements.txt..."
         $CONDA_BIN/pip install --quiet -r "$BUILD_DIR/requirements.txt"
     fi
-fi
+
 $CONDA_BIN/conda clean -pt
 
 #

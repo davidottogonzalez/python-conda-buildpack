@@ -75,7 +75,7 @@ fi
 # Second check if requirements.txt exists and if so install any other dependencies
     if [ -e "$BUILD_DIR/requirements.txt" ]; then
         echo "-----> Installing pip packages from requirements.txt..."
-        $CONDA_BIN/pip install --quiet -r "$BUILD_DIR/requirements.txt"
+        $CONDA_BIN/pip install -r "$BUILD_DIR/requirements.txt"
     fi
 
 $CONDA_BIN/conda clean -pt

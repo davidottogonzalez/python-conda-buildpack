@@ -68,7 +68,8 @@ else
     # No conda environment so use traditional requirements files.
     if [ -e "$BUILD_DIR/conda_requirements.txt" ]; then
         echo "-----> Installing conda packages from conda_requirements.txt..."
-        $CONDA_BIN/conda install --file "$BUILD_DIR/conda_requirements.txt" --yes | indent
+        #$CONDA_BIN/conda install --file "$BUILD_DIR/conda_requirements.txt" --yes | indent
+	cat "$BUILD_DIR/conda_requirements.txt" | xargs -I{} -d"\n" $CONDA_BIN/conda install {} --yes | indent
     fi
     if [ -e "$BUILD_DIR/requirements.txt" ]; then
         echo "-----> Installing pip packages from requirements.txt..."

@@ -13,5 +13,5 @@ Uses the Anaconda Teradata and Unixodbc driver packages (see environment.yml)
 
 Runtime uses Python Conda
 
-Ref: http://developer.teradata.com/tools/reference/teradata-python-module
-Ref: https://developer.teradata.com/tools/reference/teradata-python-module#UdaExec Parameters
+# Ref: http://developer.teradata.com/tools/reference/teradata-python-module
+# Ref: https://developer.teradata.com/tools/reference/teradata-python-module#UdaExec Parameters

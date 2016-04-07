@@ -1,0 +1,7 @@
+---
+applications:
+- name: conda-example
+  memory: 512M
+  instances: 1
+  buildpack: https://github.com/bbertka/python-conda-buildpack
+  command: .conda/bin/python main.py

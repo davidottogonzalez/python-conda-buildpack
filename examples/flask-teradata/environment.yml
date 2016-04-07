@@ -1,0 +1,6 @@
+name: cloudfoundry-conda
+channels:
+  - anaconda
+dependencies:
+  - unixodbc
+  - teradata

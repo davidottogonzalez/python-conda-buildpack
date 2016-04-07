@@ -1,6 +1,6 @@
 ---
 applications:
-- name: conda-example
+- name: conda-flask-teradata
   memory: 512M
   instances: 1
   buildpack: https://github.com/bbertka/python-conda-buildpack

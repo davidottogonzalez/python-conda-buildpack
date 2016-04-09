@@ -29,6 +29,7 @@ RUNTIME="$BUILD_DIR/runtime.txt"
 cd $BUILD_DIR/lib
 tar zxvf jdk-8u77-linux-x64.tar.gz
 rm jdk-8u77-linux-x64.tar.gz
+JAVA_HOME=$BUILD_DIR/lib/jdk1.8.0_77/
 
 # Get the runtime version and download appropriate Miniconda
 if [ -e $RUNTIME ]; then

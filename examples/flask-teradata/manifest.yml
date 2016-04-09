@@ -5,3 +5,6 @@ applications:
   instances: 1
   buildpack: https://github.com/bbertka/python-conda-buildpack
   command: .conda/bin/python main.py
+  env:
+    http_proxy: http://173.213.216.20:80
+    https_proxy: http://173.213.216.20:80

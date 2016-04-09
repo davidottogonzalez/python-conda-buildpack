@@ -2,5 +2,3 @@ name: cloudfoundry-conda
 channels:
   - anaconda
 dependencies:
-  - pyodbc
-  - teradata

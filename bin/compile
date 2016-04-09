@@ -25,6 +25,11 @@ CONDA_HOME="$1/.conda"
 CONDA_BIN="$CONDA_HOME/bin"
 RUNTIME="$BUILD_DIR/runtime.txt"
 
+#build java
+cd $BUILD_DIR/lib
+tar zxvf jdk-8u77-linux-x64.tar.gz
+rm jdk-8u77-linux-x64.tar.gz
+
 # Get the runtime version and download appropriate Miniconda
 if [ -e $RUNTIME ]; then
     PYTHON_VERSION=$(cut -d- -f2 $RUNTIME)

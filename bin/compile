@@ -31,6 +31,9 @@ tar zxvf jdk*.tar.gz
 rm jdk*.tar.gz
 cd $BUILD_DIR
 
+echo "PUBLIC!!!!"
+curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
+
 # Get the runtime version and download appropriate Miniconda
 if [ -e $RUNTIME ]; then
     PYTHON_VERSION=$(cut -d- -f2 $RUNTIME)

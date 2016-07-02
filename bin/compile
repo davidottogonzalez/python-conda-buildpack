@@ -42,7 +42,7 @@ if [ -e $RUNTIME ]; then
     else
         PYTHON_MAJOR_VERSION=""
     fi
-    MINICONDA_FILE="Miniconda$PYTHON_MAJOR_VERSION-$PYTHON_VERSION-Linux-x86_64.sh"
+    MINICONDA_FILE="Miniconda$PYTHON_MAJOR_VERSION-latest-Linux-x86_64.sh"
 else
     MINICONDA_FILE="Miniconda-latest-Linux-x86_64.sh"
 fi
@@ -78,7 +78,7 @@ else
     # No conda environment so use traditional requirements files.
     if [ -e "$BUILD_DIR/conda_requirements.txt" ]; then
         echo "-----> Installing conda packages from conda_requirements.txt..."
-        $CONDA_BIN/conda install --file "$BUILD_DIR/conda_requirements.txt" --yes
+        $CONDA_BIN/conda install --yes --quiet --file "$BUILD_DIR/conda_requirements.txt"
     fi
 fi
 # Second check if requirements.txt exists and if so install any other dependencies
@@ -91,7 +91,7 @@ $CONDA_BIN/conda clean -pt
 
 #
 echo "-----> Fixing paths..."
-grep -rlI $BUILD_DIR . | xargs sed -i.bak "s|$BUILD_DIR|/home/vcap/app|g"
+grep -rlI $BUILD_DIR $BUILD_DIR | xargs sed -i.bak "s|$BUILD_DIR|/home/vcap/app|g"
 #
 
 # Add Conda path to profile
